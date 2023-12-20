@@ -1,0 +1,5 @@
+# Ignorar todos os arquivos de log
+*.log
+
+# Ignorar arquivos de configuração local
+appsettings.Local.json
