@@ -1,0 +1,32 @@
+﻿version: '3.8'
+
+services:
+  app:
+    image: desafioBakEndPL-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Database=DesafioDB;User=sa;Password=${SA_PASSWORD};
+  
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: ${SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - dbdata:/var/opt/mssql
+    healthcheck:
+        test: [ "CMD", "/opt/mssql-tools/bin/sqlcmd", "-U", "sa", "-P", "${SA_PASSWORD}", "-Q", "SELECT 1" ]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+
+volumes:
+  dbdata:

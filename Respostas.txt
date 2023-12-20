@@ -1,0 +1,24 @@
+﻿Perguntas
+
+
+
+
+
+Qual DB foi usado e por quê?
+O banco de dados escolhido foi o SQL Server, devido à sua eficiência em operações transacionais e suporte robusto para operações de alta concorrência, além de ser uma escolha comum no ecossistema .NET devido à integração nativa e ferramentas de desenvolvimento.
+
+Qual arquitetura e/ou padrões de projeto você seguiu e por quê?
+A arquitetura adotada foi uma variação do MVC, conhecida como Model-View-Controller for Services, em que a camada de "View" não está presente, pois trata-se de uma API backend. Essa abordagem mantém a separação de responsabilidades entre a lógica de negócios, acesso a dados e apresentação de dados (neste caso, a apresentação é a resposta da API).
+
+Consegue citar alguma outra arquitetura e/ou padrão de projeto que seria interessante usar num cenário de alta performance?
+Outras abordagens que poderiam contribuir para alta performance incluem Domain-Driven Design (DDD) para uma modelagem rica e focada no domínio.
+
+Quais princípios do SOLID foram seguidos, quais não e por quê?
+
+O princípio de responsabilidade única foi aplicado ao dividir a lógica em várias classes e serviços.
+O princípio aberto/fechado foi respeitado através do uso de injeção de dependência, permitindo que novas funcionalidades sejam adicionadas com pouca ou nenhuma alteração nas classes existentes.
+O princípio de substituição de Liskov não foi desafiado, já que não houve uma utilização significativa de herança ou polimorfismo.
+O princípio de segregação de interfaces poderia ser melhor aplicado com o refinamento das interfaces para representarem contratos mais específicos.
+O princípio de inversão de dependência foi claramente seguido com a injeção de dependência, garantindo que as classes de alto nível não dependessem de classes de baixo nível, mas sim de abstrações.
+
+Devido ao prazo e pouca complexidade do projeto foram escolhidos principios mais fácies de usar e que não precisava aplicar tantas abstrações.
